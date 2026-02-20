@@ -1,24 +1,28 @@
-// version 1.0
-//author Srijan
-//useCase 1: Welcome page
-/*
- * Use Case 1: Application Entry & Welcome Message
- * Palindrome Checker App
- * Version: 1.0
+/**
+ * ============================================================
+ * MAIN CLASS – UseCase3PalindromeCheckerApp
+ * ============================================================
+ *
+ * Use Case 3: Reverse String Based Palindrome Check
  */
 
 public class PalindromeCheckerApp {
-    static final String APP_NAME = "Palindrome Checker App";
-    static final String APP_VERSION = "Version 1.0";
+
+    /**
+     * Application entry point for UC3.
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
 
-        System.out.println("=======================================");
-        System.out.println(" Welcome to " + APP_NAME);
-        System.out.println(" " + APP_VERSION);
-        System.out.println("=======================================");
-        System.out.println("This application checks whether a given string is a palindrome.");
-        System.out.println("Developed to demonstrate core Java programming concepts.");
-        System.out.println("\nApplication started successfully.");
-        System.out.println("Proceeding to next use case...\n");
+        String input = "madam";
+        String reversed = "";
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed = reversed + input.charAt(i);
+        }
+        if (input.equals(reversed)) {
+            System.out.println(input + " is a Palindrome.");
+        } else {
+            System.out.println(input + " is NOT a Palindrome.");
+        }
     }
 }
