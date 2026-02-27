@@ -1,16 +1,6 @@
 import java.util.Scanner;
+
 public class PalindromeCheckerApp {
-
-    // Node class for Singly Linked List
-    static class Node {
-        char data;
-        Node next;
-
-        Node(char data) {
-            this.data = data;
-            this.next = null;
-        }
-    }
 
     public static void main(String[] args) {
 
@@ -18,53 +8,22 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
 
-        if (input.isEmpty()) {
-            System.out.println("Empty string is a Palindrome.");
-            return;
-        }
-        Node head = new Node(input.charAt(0));
-        Node current = head;
+        boolean result = isPalindrome(input, 0, input.length() - 1);
 
-        for (int i = 1; i < input.length(); i++) {
-            current.next = new Node(input.charAt(i));
-            current = current.next;
-        }
-        Node slow = head;
-        Node fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        Node secondHalf = reverse(slow);
-        Node firstHalf = head;
-        Node tempSecond = secondHalf;
-        boolean isPalindrome = true;
-        while (tempSecond != null) {
-            if (firstHalf.data != tempSecond.data) {
-                isPalindrome = false;
-                break;
-            }
-            firstHalf = firstHalf.next;
-            tempSecond = tempSecond.next;
-        }
-        if (isPalindrome) {
+        if (result) {
             System.out.println("The given string is a Palindrome.");
         } else {
             System.out.println("The given string is NOT a Palindrome.");
         }
         scanner.close();
     }
-    public static Node reverse(Node head) {
-        Node prev = null;
-        Node current = head;
-        Node nextNode;
-
-        while (current != null) {
-            nextNode = current.next;
-            current.next = prev;
-            prev = current;
-            current = nextNode;
+    public static boolean isPalindrome(String str, int start, int end) {n
+        if (start >= end) {
+            return true;
         }
-        return prev;
+        if (str.charAt(start) != str.charAt(end)) {
+            return false;
+        }
+        return isPalindrome(str, start + 1, end - 1);
     }
 }
