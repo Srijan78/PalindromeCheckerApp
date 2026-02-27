@@ -12,6 +12,12 @@ import java.util.*;
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        PalindromeService service = new PalindromeService();
+        System.out.println("Choose Algorithm:");
+        System.out.println("1. Stack");
+        System.out.println("2. Deque");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
         System.out.print("Enter a string: ");
         String input = scanner.nextLine();
         String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
